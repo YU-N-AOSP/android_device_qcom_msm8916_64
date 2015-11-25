@@ -34,6 +34,7 @@ $(INSTALLED_KERNEL_TARGET): $(TARGET_PREBUILT_KERNEL) | $(ACP)
 #----------------------------------------------------------------------
 # Copy additional target-specific files
 #----------------------------------------------------------------------
+ifneq ($(strip $(TARGET_USE_CM_RAMDISK)),true)
 include $(CLEAR_VARS)
 LOCAL_MODULE       := vold.fstab
 LOCAL_MODULE_TAGS  := optional eng
@@ -64,6 +65,7 @@ LOCAL_MODULE_CLASS := ETC
 LOCAL_SRC_FILES    := $(LOCAL_MODULE)
 LOCAL_MODULE_PATH  := $(TARGET_ROOT_OUT)
 include $(BUILD_PREBUILT)
+endif # TARGET_USE_CM_RAMDISK
 
 include $(CLEAR_VARS)
 LOCAL_MODULE       := gpio-keys.kl
