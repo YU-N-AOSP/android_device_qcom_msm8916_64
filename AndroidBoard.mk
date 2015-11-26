@@ -18,6 +18,7 @@ endif
 #----------------------------------------------------------------------
 # Compile Linux Kernel
 #----------------------------------------------------------------------
+ifneq ($(TARGET_DEVICE),tomato)
 ifeq ($(KERNEL_DEFCONFIG),)
     ifeq ($(TARGET_BUILD_VARIANT),user)
       KERNEL_DEFCONFIG := msm-perf_defconfig
@@ -27,6 +28,7 @@ ifeq ($(KERNEL_DEFCONFIG),)
 endif
 
 include kernel/AndroidKernel.mk
+endif # tomato
 
 $(INSTALLED_KERNEL_TARGET): $(TARGET_PREBUILT_KERNEL) | $(ACP)
 	$(transform-prebuilt-to-target)
