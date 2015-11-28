@@ -28,10 +28,10 @@ ifeq ($(KERNEL_DEFCONFIG),)
 endif
 
 include kernel/AndroidKernel.mk
-endif # tomato
 
 $(INSTALLED_KERNEL_TARGET): $(TARGET_PREBUILT_KERNEL) | $(ACP)
 	$(transform-prebuilt-to-target)
+endif # tomato
 
 #----------------------------------------------------------------------
 # Copy additional target-specific files
