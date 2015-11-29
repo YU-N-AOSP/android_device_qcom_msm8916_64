@@ -18,7 +18,7 @@ endif
 #----------------------------------------------------------------------
 # Compile Linux Kernel
 #----------------------------------------------------------------------
-ifneq ($(TARGET_DEVICE),tomato)
+ifneq ($(filter tomato lettuce,$(TARGET_DEVICE)),)
 ifeq ($(KERNEL_DEFCONFIG),)
     ifeq ($(TARGET_BUILD_VARIANT),user)
       KERNEL_DEFCONFIG := msm-perf_defconfig
