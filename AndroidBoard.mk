@@ -16,24 +16,6 @@ droidcore: $(INSTALLED_BOOTLOADER_MODULE)
 endif
 
 #----------------------------------------------------------------------
-# Compile Linux Kernel
-#----------------------------------------------------------------------
-ifneq ($(filter tomato lettuce,$(TARGET_DEVICE)),)
-ifeq ($(KERNEL_DEFCONFIG),)
-    ifeq ($(TARGET_BUILD_VARIANT),user)
-      KERNEL_DEFCONFIG := msm-perf_defconfig
-    else
-      KERNEL_DEFCONFIG := msm_defconfig
-    endif
-endif
-
-include kernel/AndroidKernel.mk
-
-$(INSTALLED_KERNEL_TARGET): $(TARGET_PREBUILT_KERNEL) | $(ACP)
-	$(transform-prebuilt-to-target)
-endif # tomato
-
-#----------------------------------------------------------------------
 # Copy additional target-specific files
 #----------------------------------------------------------------------
 ifneq ($(strip $(TARGET_USE_CM_RAMDISK)),true)
