@@ -16,6 +16,17 @@ droidcore: $(INSTALLED_BOOTLOADER_MODULE)
 endif
 
 #----------------------------------------------------------------------
+# Compile Linux Kernel
+#----------------------------------------------------------------------
+
+include kernel/AndroidKernel.mk
+
+$(INSTALLED_KERNEL_TARGET): $(TARGET_PREBUILT_KERNEL) | $(ACP)
+       $(transform-prebuilt-to-target)
+
+#----------------------------------------------------------------------
+
+#----------------------------------------------------------------------
 # Copy additional target-specific files
 #----------------------------------------------------------------------
 ifneq ($(strip $(TARGET_USE_CM_RAMDISK)),true)
