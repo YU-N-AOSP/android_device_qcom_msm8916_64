@@ -98,9 +98,11 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     camera2.portability.force_api=1
 PRODUCT_PACKAGES += wcnss_service
 
+ifneq ($(PRODUCT_BRAND),YU)
 # MSM IRQ Balancer configuration file
 PRODUCT_COPY_FILES += \
     device/qcom/msm8916_64/msm_irqbalance.conf:system/vendor/etc/msm_irqbalance.conf
+endif
 
 #wlan driver
 PRODUCT_COPY_FILES += \
