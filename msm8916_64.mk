@@ -41,7 +41,9 @@ ifneq (,$(strip $(wildcard $(PRODUCT_RENDERING_ENGINE_REVLIB))))
 endif
 endif
 
+ifneq ($(PRODUCT_BRAND),YU) # We are using AOSP Radio pakcages
 PRODUCT_BOOT_JARS += qcom.fmradio
+endif
 
 #PRODUCT_BOOT_JARS += vcard
 PRODUCT_BOOT_JARS += tcmiface
