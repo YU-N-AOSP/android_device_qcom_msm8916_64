@@ -24,7 +24,8 @@ TARGET_USES_QCA_NFC := other
 TARGET_USES_NQ_NFC := false
 
 PRODUCT_PROPERTY_OVERRIDES += \
-           dalvik.vm.heapgrowthlimit=128m
+           dalvik.vm.heapgrowthlimit=128m \
+           dalvik.vm.boot-dex2oat-threads=4
 $(call inherit-product, device/qcom/common/common64.mk)
 
 PRODUCT_NAME := msm8916_64
@@ -194,3 +195,8 @@ PRODUCT_COPY_FILES += \
     device/qcom/msm8916_64/sensors/hals.conf:system/etc/sensors/hals.conf
 
 GMS_ENABLE_OPTIONAL_MODULES := false
+
+# OEM Unlock reporting
+ADDITIONAL_DEFAULT_PROPERTIES += \
+    ro.oem_unlock_supported=1
+
